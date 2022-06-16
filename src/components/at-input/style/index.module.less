@@ -1,0 +1,40 @@
+.atComponent{
+    width: 100%;
+    position: relative;
+    .hideBlock{
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: -1;
+        padding: 4px 11px;
+        white-space: pre;
+    }
+}
+.datalist{
+    width: 200px;
+    border-radius: 5px;
+    box-shadow: 0 0 5px #d0d3dd;
+    position: absolute;
+    z-index: 3;
+    background-color: white;
+    padding: 2px;
+    box-sizing: border-box;
+    max-width: 200px;
+    max-height: 300px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    li{
+        border-bottom: 1px solid #dfe5f7;
+        padding: 5px;
+        color: #333333;
+        cursor: pointer;
+        box-sizing: border-box;
+        border-radius: 2px;
+    }
+    li:hover{
+    background-color: #fff2e5;
+    color: #ff8200;
+    }
+}
