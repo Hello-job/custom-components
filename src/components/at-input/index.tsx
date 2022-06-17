@@ -116,7 +116,6 @@ const AtInput: React.FC<AtInputProps> = () => {
     const strbefore = content.substring(0, atIndex+1);
     const strafter = content.substring(cursorIndex+1, content.length);
     const mergeStr = `${strbefore}${item.name} ${strafter}`
-    console.log('>>>>>strbefore', strbefore, strafter, mergeStr)
     setContent(mergeStr)
     setListModalVisible(false)
     TextAreaRef.current.focus()
