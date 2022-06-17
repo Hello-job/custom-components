@@ -87,6 +87,7 @@ const AtInput: React.FC<AtInputProps> = () => {
         popPosition()
        }
     }
+  
     window.addEventListener("resize", handleResize);
     return () => {
       window.removeEventListener("resize", handleResize);
