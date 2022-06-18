@@ -64,7 +64,6 @@ const AtInput: React.FC<AtInputProps> = () => {
         setListModalVisible(false);
       }
     }
-
     window.addEventListener("click", handler);
     window.addEventListener("mousedown", handler);
     return () => {
@@ -76,11 +75,12 @@ const AtInput: React.FC<AtInputProps> = () => {
   useEffect(() => {
     function handleResize(){
         const popdom: any = document.getElementById('popList')
-       let distanceBottom = window.innerHeight - (popdom.offsetTop - window.pageYOffset) - popdom.offsetHeight
+        const atBlock: any = document.getElementById("atid");
+       let distanceBottom = window.innerHeight - (popdom.getBoundingClientRect().top - window.pageYOffset) - popdom.offsetHeight
        if (distanceBottom <= 0) {
         let offset = {
             ...blockOfset,
-            offsetTop: -popdom.offsetHeight
+            offsetTop: -popdom.offsetHeight+ atBlock.offsetTop
           };
           setBlockOfset(offset);
        }  else if (distanceBottom >= popdom.offsetHeight) {
@@ -112,6 +112,7 @@ const AtInput: React.FC<AtInputProps> = () => {
       setListModalVisible(false);
     }
   };
+
 
   const selectAtdata = (item: any) => {
     const strbefore = content.substring(0, atIndex+1);
