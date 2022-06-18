@@ -3,6 +3,7 @@ import useDate from '../../hooks/useDate'
 import { Menu, Switch, MenuProps, Layout } from "antd";
 import { useNavigate,Outlet } from "react-router-dom";
 import AtInput from '../../components/at-input';
+import SeleTab from '../../components/Tbas'
 
 const { SubMenu } = Menu;
 const {Sider} = Layout; //使用定义
@@ -41,6 +42,7 @@ const Home = () => {
           })}
         </Menu>
         <AtInput/>
+        <SeleTab/>
     <Outlet/>
     </>
 }
