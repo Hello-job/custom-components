@@ -23,7 +23,6 @@ const Tab = ({ children, onChange }: any) => {
   // 带渲染组件
   let renderChild: any = null;
   React.Children.forEach(children,(item: TabItem) => {
-   
     if (React.isValidElement(item) && item.type.displayName === "tabItem") {
       const { props } = item;
       const { name = "", label = "" } = props;
@@ -50,7 +49,6 @@ const Tab = ({ children, onChange }: any) => {
   });
 
   const changeTab = (name: any) => {
-    console.log('>>>>这个不是改变了吗', name)
     activeIndex.current = name;
     forceUpdate({});
     onChange && onChange(name);
