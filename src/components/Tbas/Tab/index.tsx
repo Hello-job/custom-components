@@ -32,7 +32,6 @@ const Tab = ({ children, onChange }: any) => {
         active: name === activeIndex.current,
         component: item,
       };
-      // console.log('>>>>.为什么', name,  activeIndex.current)
       if (name === activeIndex.current) {
       
         renderChild = item;
