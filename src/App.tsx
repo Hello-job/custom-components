@@ -5,7 +5,7 @@ import routers from "./routers";
 // import zhCN from 'antd/lib/locale/zh_CN';
 import "antd/dist/antd.css";
 import 'normalize.css'
-import { BrowserRouter, Routes, Route, Outlet } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Outlet, Navigate } from "react-router-dom";
 import SideMenu from "./layout";
 import Home from "./views/home";
 
@@ -15,6 +15,7 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
+      <Route path="*" element={<Navigate to="/home"/>}></Route>
         {routers.map((route: any) => {
           return (
             <Route
