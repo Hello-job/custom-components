@@ -1,17 +1,36 @@
 import React, { memo, useState } from "react";
-import { Menu, Switch, MenuProps, Layout } from "antd";
+import { Menu } from "antd";
+import { useNavigate } from 'react-router-dom'
+import routers from '../../routers'
 const { SubMenu } = Menu;
 
 const MenuList = () => {
+  const navigate = useNavigate()
+  const handlePath = (value: any) => {
+    console.log(value)
+    const { key } = value;
+    navigate(key)
+  }
+
+
+  const getMenuList = (MenuList: any) => {
+    return <>
+        {
+          MenuList.map((item: any) => {
+            if (item.children) {
+              return  <SubMenu key={item.path} title={item.name}>
+                    {getMenuList(item.children)}
+              </SubMenu>
+            }
+            return <Menu.Item key={item.path} onClick={handlePath}>{item.name}</Menu.Item>
+          })
+        }
+    </>
+  }
   return (
     <>
       <Menu  mode="inline">
-        <SubMenu title="父组件">
-          <Menu.Item key="2">用户管理</Menu.Item>
-          <Menu.Item key="4">用户管理</Menu.Item>
-        </SubMenu>
-        <Menu.Item key="1">用户管理</Menu.Item>
-        <Menu.Item key="3">用户管理</Menu.Item>
+       {getMenuList(routers)}
       </Menu>
     </>
   );

@@ -37,7 +37,7 @@ const Home = () => {
       </Sider>
       <Layout>
         <Header>Header</Header>
-        <Content>Content</Content>
+        <Content><Outlet/></Content>
         <Footer>Footer</Footer>
       </Layout>
     </Layout>

@@ -10,30 +10,22 @@ const routers = [
 		component: lazy(() => import('../views/home')) ,
 		children: [
 			{
-				path: '/home/A',
-				name: '项目A',
+				path: '/home/atTextarea',
+				name: '@发表评论组件',
 				exact: true,
 				sensitive: true,
 				strict: true,
-				component: lazy(() => import('../views/home/A')) ,
+				component: lazy(() => import('../views/component/at-textarea')) ,
 			},
 			{
-				path: '/home/B',
-				name: '项目B',
+				path: '/home/tabs',
+				name: '自定义tabs组件',
 				exact: true,
 				sensitive: true,
 				strict: true,
-				component: lazy(() => import('../views/home/B')) ,
+				component: lazy(() => import('../views/component/tabs')) ,
 			},
 		]
-	},
-    {
-		path: '/about',
-        name: '中间页',
-		exact: true,
-		sensitive: true,
-		strict: true,
-		component: lazy(() => import('../views/about')) ,
 	},
 	{
 		path: '/login',
