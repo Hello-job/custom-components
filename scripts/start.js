@@ -112,6 +112,7 @@ checkBrowsers(paths.appPath, isInteractive)
       host: HOST,
       port,
     };
+    console.log('>>>>>>>serverConfigd',serverConfig)
     const devServer = new WebpackDevServer(serverConfig, compiler);
     // Launch WebpackDevServer.
     devServer.startCallback(() => {
