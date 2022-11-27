@@ -1,11 +1,12 @@
-import React, { memo } from 'react'
-import { AtTextArea } from '../../../components/index'
-
+import React, { memo } from "react";
+import { AtTextArea } from "../../../components/index";
 
 const ComAtTextArea = () => {
-    return <>
-     <AtTextArea/>
+  return (
+    <>
+      <AtTextArea />
     </>
-}
+  );
+};
 
-export default memo(ComAtTextArea)
+export default memo(ComAtTextArea);

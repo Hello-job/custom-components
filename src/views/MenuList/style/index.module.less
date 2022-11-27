@@ -1,0 +1,28 @@
+.sideMenu{
+    height: 100%;
+    position: relative;
+}
+.sideMenuSize{
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 100%;
+  width: 1px;
+}
+
+.sideMenuSize:hover{
+   background-color: red;
+   cursor: col-resize;
+  }
+  .sideMenuSize::after{
+    content: '';
+    width: 5px;
+    height: 100%;
+    position: absolute;
+   }
+   .sideMenuSize::before{
+    content: '';
+    width: 5px;
+    height: 100%;
+    position: absolute;
+   }

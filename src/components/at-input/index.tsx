@@ -22,7 +22,7 @@ const AtInput: React.FC<AtInputProps> = () => {
     offsetTop: 0,
   });
   const popRef = useRef<any>(null);
-  const TextAreaRef = useRef<any>(null)
+  const TextAreaRef = useRef<any>(null);
   const [listModalVisible, setListModalVisible] = useState(false);
 
   const textAreaChange = (e: any) => {
@@ -41,17 +41,17 @@ const AtInput: React.FC<AtInputProps> = () => {
 
   const popPosition = () => {
     if (document.getElementById("atid")) {
-        const atBlock: any = document.getElementById("atid");
-        let offset = {
-          offsetLeft: atBlock?.offsetLeft,
-          offsetTop: atBlock?.offsetTop + 30,
-        };
-        setBlockOfset(offset);
-      }
-  }
+      const atBlock: any = document.getElementById("atid");
+      let offset = {
+        offsetLeft: atBlock?.offsetLeft,
+        offsetTop: atBlock?.offsetTop + 30,
+      };
+      setBlockOfset(offset);
+    }
+  };
 
   useEffect(() => {
-    popPosition()
+    popPosition();
   }, [htmlStr]);
 
   useEffect(() => {
@@ -73,26 +73,29 @@ const AtInput: React.FC<AtInputProps> = () => {
   }, []);
 
   useEffect(() => {
-    function handleResize(){
-        const popdom: any = document.getElementById('popList')
-        const atBlock: any = document.getElementById("atid");
-       let distanceBottom = window.innerHeight - (popdom.getBoundingClientRect().top - window.pageYOffset) - popdom.offsetHeight
-       if (distanceBottom <= 0) {
+    function handleResize() {
+      const popdom: any = document.getElementById("popList");
+      const atBlock: any = document.getElementById("atid");
+      let distanceBottom =
+        window.innerHeight -
+        (popdom.getBoundingClientRect().top - window.pageYOffset) -
+        popdom.offsetHeight;
+      if (distanceBottom <= 0) {
         let offset = {
-            ...blockOfset,
-            offsetTop: -popdom.offsetHeight+ atBlock.offsetTop
-          };
-          setBlockOfset(offset);
-       }  else if (distanceBottom >= popdom.offsetHeight) {
-        popPosition()
-       }
+          ...blockOfset,
+          offsetTop: -popdom.offsetHeight + atBlock.offsetTop,
+        };
+        setBlockOfset(offset);
+      } else if (distanceBottom >= popdom.offsetHeight) {
+        popPosition();
+      }
     }
-  
+
     window.addEventListener("resize", handleResize);
     return () => {
       window.removeEventListener("resize", handleResize);
     };
-  }, [blockOfset])
+  }, [blockOfset]);
 
   const handleChange = () => {
     const ati = content.substring(0, cursorIndex + 1).lastIndexOf("@");
@@ -113,14 +116,13 @@ const AtInput: React.FC<AtInputProps> = () => {
     }
   };
 
-
   const selectAtdata = (item: any) => {
-    const strbefore = content.substring(0, atIndex+1);
-    const strafter = content.substring(cursorIndex+1, content.length);
-    const mergeStr = `${strbefore}${item.name} ${strafter}`
-    setContent(mergeStr)
-    setListModalVisible(false)
-    TextAreaRef.current.focus()
+    const strbefore = content.substring(0, atIndex + 1);
+    const strafter = content.substring(cursorIndex + 1, content.length);
+    const mergeStr = `${strbefore}${item.name} ${strafter}`;
+    setContent(mergeStr);
+    setListModalVisible(false);
+    TextAreaRef.current.focus();
   };
 
   return (
@@ -140,7 +142,7 @@ const AtInput: React.FC<AtInputProps> = () => {
       {listModalVisible ? (
         <>
           <ul
-          id='popList'
+            id="popList"
             className={`${Styles.datalist}`}
             style={{
               left: blockOfset.offsetLeft + "px",
@@ -150,9 +152,12 @@ const AtInput: React.FC<AtInputProps> = () => {
             <li>请输入关键字搜索</li>
             {list.map((item: any) => {
               return (
-                <li key={item.id} onClick={() => {
-                    selectAtdata(item)
-                }}>
+                <li
+                  key={item.id}
+                  onClick={() => {
+                    selectAtdata(item);
+                  }}
+                >
                   {item.name}
                 </li>
               );
@@ -160,6 +165,16 @@ const AtInput: React.FC<AtInputProps> = () => {
           </ul>
         </>
       ) : null}
+      <span
+        onClick={() => {
+          window.open(
+            `https://applink.feishu.cn/client/chat/open?openChatId=oc_07579c4e7aa71da7b15c5efd391ecba7`
+          );
+          // window.open(oc_07579c4e7aa71da7b15c5efd391ecba7)
+        }}
+      >
+        飞书链接
+      </span>
     </div>
   );
 };

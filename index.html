@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    	let arrTree = [
+            				{
+							column: 4,
+						},
+						{
+							column: 5,
+						},
+						{
+							column: 6,
+						},
+		// {
+		// 	conds: [
+		// 		{
+		// 			conds: [
+		// 				{
+		// 					column: 1,
+		// 				},
+		// 				{
+		// 					column: 2,
+		// 				},
+		// 				{
+		// 					column: 3,
+		// 				},
+		// 			],
+		// 			type: 'and',
+		// 		},
+		// 		{
+		// 			conds: [
+		// 				{
+		// 					column: 4,
+		// 				},
+		// 				{
+		// 					column: 5,
+		// 				},
+		// 				{
+		// 					column: 6,
+		// 				},
+		// 			],
+		// 			type: 'and',
+		// 		},
+		// 	],
+		// 	type: 'and',
+		// },
+	];
+    // let arrTree = {
+    //     column: 4,
+
+    //     }
+
+	function conditionRecursionCopy(condition, column, toUpdate) {
+		if (Object.prototype.toString.call(condition) === '[object Object]') {
+			Object.keys(condition)?.forEach((key) => {
+				if (key === 'conds') {
+					conditionRecursionCopy(condition[key], column, flag);
+				}
+				if (key === 'column' && condition.column === column) {
+                   flag.show = true
+                   condition = {};
+				}
+			});
+		} else if (Object.prototype.toString.call(condition) === '[object Array]') {
+			return condition?.filter((item) => {
+				if (item?.conds?.length > 0) {
+					item.conds = conditionRecursionCopy(item.conds, column,flag);
+				}
+                if (item?.column === column) {
+                    flag.show = true
+                }
+				if (!item?.column || item?.column !== column) {
+					return item;
+				}
+			});
+		}
+		return condition;
+	}
+
+    let toUpdate = {
+        show: false
+    };
+    console.log('>>>>>conditionRecursionCopy(arrTree, 4)', conditionRecursionCopy(arrTree, 4, toUpdate), toUpdate)
+</script>
+</body>
+</html>
